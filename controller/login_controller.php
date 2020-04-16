@@ -18,7 +18,7 @@ function iniciarSesion($email, $password) {
 	// If result matched $myusername and $password, table row must be 1 row
 
 	if ($data > 1) {
-		$_SESSION['root'] = 'http://' . $_SERVER["SERVER_NAME"] . '/ambassador_portal/';
+		$_SESSION['root'] = 'http://' . $_SERVER["SERVER_NAME"] . '/';
 		$_SESSION['user_id'] = $data["id"];
 		$_SESSION['user_name'] = "{$data['name']} {$data['last_name']}";
 		$_SESSION['user_email'] = $data["email"];
