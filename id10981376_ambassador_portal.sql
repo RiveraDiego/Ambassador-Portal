@@ -1,33 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-01-2020 a las 18:02:30
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `id10981376_ambassador_portal`
---
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `api_list`
--- (Véase abajo para la vista actual)
---
 CREATE TABLE `api_list` (
 `id` int(11)
 ,`name` varchar(255)
@@ -48,11 +23,6 @@ CREATE TABLE `api_list` (
 ,`created_date` datetime
 );
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `articles`
---
 
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
@@ -68,21 +38,11 @@ CREATE TABLE `articles` (
   `shopify_post_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `articles`
---
-
 INSERT INTO `articles` (`id`, `title`, `content`, `featured_image`, `tags`, `author`, `user_id`, `published`, `created_date`, `blog`, `shopify_post_id`) VALUES
 (1, 'Post 1 - Juan Perez', 'Post 1 - Juan Perez test', 'https://cdn.shopify.com/s/files/1/0989/7574/articles/596d40aa1f127ac4bc286d60b51beb50.jpg?v=1579626998', 'tag1', 'Juan Perez', 2, 'false', '2020-01-21 12:15:06', 2147483647, 383576277056),
 (2, 'Post 1 - John Smith', '<p>Post 1 - John Smith<br></p>', 'https://cdn.shopify.com/s/files/1/0989/7574/articles/0629ce5f860a12840262216758693a39.jpg?v=1579627034', 'tag1', 'John Smith', 3, 'false', '2020-01-21 12:17:14', 2147483647, 383576309824),
 (3, 'Post 2 - John Smith', '<p>Post 2 - John Smith<br></p>', 'https://cdn.shopify.com/s/files/1/0989/7574/articles/4b897aeccf529982d5ba2b7c3eb012df.jpg?v=1579634074', 'Appetizer', 'John Smith', 3, 'false', '2020-01-21 14:14:34', 2147483647, 383576703040),
 (5, 'Crispy Buffalo Chicken Wings', '<p style=\'margin-right: 0px; margin-left: 0px; font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif;\'>As the Super Bowl gets closer, I wanted to make one of the most popular and delicious Super Bowl recipes for this video, crispy Buffalo chicken wings!</p><p style=\'margin-right: 0px; margin-left: 0px; font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif;\'>I love chicken wings and my whole family loves them too. I havenâ€™t found a restaurant that has become my go-to for wings, as I usually find them soggy, underwhelming and not really all that good tasting. So I thought, why donâ€™t I do them at home on the grill?</p><p style=\'margin-right: 0px; margin-left: 0px; font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif;\'>Now I love crispy wings. But as Iâ€™m trying to stick to some of my New Year resolutions, I wanted to find an alternative to deep fried chicken wings that would still be crispy.Â  This recipe did it for me, and it only took about 40 minutes! And they turned out very very crispy. My wife couldnâ€™t believe these chicken wings were not deep fried! Her reaction was hilarious (next time I promise ill take a video for you guys! Haha!). Check the video below, itâ€™s easy!</p><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'>\n<span style=\"font-weight: 700;\">Video </span><b>Recipe</b>\n</h2><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'>\n<iframe frameborder=\"0\" src=\"//www.youtube.com/embed/-RD_U4bowfg\" width=\"640\" height=\"360\" class=\"note-video-clip\"></iframe><b><br></b>\n</h2><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-weight: 700; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'>Ingredients</h2><h3 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-weight: 700; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.375em;\'>Chicken wings</h3><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'><ul style=\'margin-right: 0px; margin-bottom: 15px; margin-left: 20px; padding: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>\n<li style=\"margin-bottom: 0.25em;\">\n<a href=\"https://www.fogocharcoal.com/collections/all/products/fogo-35-pound-super-premium-hardwood-charcoal-bag\" title=\"Fogo Super Premium Hardwood Charcoal\" style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(219, 80, 74);\">Fogo Super Premium Charcoal</a>Â (adds that signature Fogo Lump Charcoal smoky flavor)</li>\n<li style=\"margin-bottom: 0.25em;\">Chicken Wings</li>\n<li style=\"margin-bottom: 0.25em;\">Half a cup of Baking Powder (add more of need be, to make sure you dust )</li>\n<li style=\"margin-bottom: 0.25em;\">Pinch of Salt and Pepper to taste</li>\n</ul></h2><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-weight: 700; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.375em;\'>Buffalo Sauce</h2><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'><ul style=\'margin-right: 0px; margin-bottom: 15px; margin-left: 20px; padding: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>\n<li style=\"margin-bottom: 0.25em;\">2/3 cup Frankâ€™s Red Hot pepper sauce</li>\n<li style=\"margin-bottom: 0.25em;\">Â½ cup unsalted butter</li>\n<li style=\"margin-bottom: 0.25em;\">Â¼ tsp cayenne pepper</li>\n<li style=\"margin-bottom: 0.25em;\">Â¼ tsp garlic powder</li>\n<li style=\"margin-bottom: 0.25em;\">1 Â½ tablespoon white vinegar</li>\n<li style=\"margin-bottom: 0.25em;\">Â¼ tsp Worcestershire sauce</li>\n</ul></h2><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-weight: 700; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'>Directions</h2><h2 style=\'font-family: \"PT Sans\", HelveticaNeue, \"Helvetica Neue\", sans-serif; line-height: 1.4; color: rgb(34, 34, 34); margin-right: 0px; margin-left: 0px; font-size: 1.625em;\'></h2><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>If you have the time put the wings on a wire rack, pat them dry with paper towels and leave them in your fridge uncovered to fully dry overnight. Mix the salt and pepper with the baking powder and cover the wings with the mix until fully coated (add some more baking powder if you feel it needs some more). This will ensure youâ€™ll get the crispy finish we all love.</p><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>When youâ€™re ready to cook, fire up your FOGO charcoal! Wait for the grill to heat upÂ  to 425F Degrees and grill the wings on indirect heat for approximate 20 minutes. Check the wings and turn them over, after another 15 min keep an eye on the wings to make sure they have a golden crispy crust but that theyâ€™re not getting burnt.</p><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>While waiting for the wings to be ready, you can prepare the awesome buffalo sauce. This is an easy recipe, just mix all the ingredients together in a hot pan.</p><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>FOGO tip: To keep the wings as crisp as possible, only toss them on the sauce right before serving!Â </p><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>Thatâ€™s it! This is an easy and fast recipe to do in your upcoming watch-party or any other get-together. This has become my go-to chicken wing recipe. Hope you enjoy them as much as my wife did! (seriously thatâ€™s all she asks for now!)</p><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>For a complete meal plan for this upcoming Super Bowl, check out ourÂ <a href=\"https://www.fogocharcoal.com/blogs/cook/super-bowl-recipes-on-the-grill\" title=\"Super Bowl Recipes\" style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(219, 80, 74);\">top 5 Super Bowl recipes</a>. I strongly recommend theÂ <a href=\"https://www.fogocharcoal.com/blogs/cook/jalapeno-poppers?_ke=\" title=\"Jalapeno Poppers\" style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(219, 80, 74);\">jalapeno poppers</a>, theyâ€™re just as easy and delicious as these chicken wings!</p><p style=\'margin-right: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: \"Roboto Condensed\", HelveticaNeue, \"Helvetica Neue\", sans-serif; font-size: 16px;\'>Let me know in the comments if you tried the recipe and how it went!</p>', 'https://cdn.shopify.com/s/files/1/0989/7574/articles/b3cd64f293c53ca81faaadb0805c7e33_a1276920-5a3e-416c-8ef0-8976cf7a3ea7.jpg?v=1579638935', 'Poultry', 'Sebastian Bussert', 4, 'false', '2020-01-21 15:35:36', 2147483647, 383576801344);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `roles`
---
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
@@ -90,19 +50,11 @@ CREATE TABLE `roles` (
   `status` varchar(9) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `roles`
---
 
 INSERT INTO `roles` (`id`, `name`, `status`) VALUES
 (1, 'Administrator', 'Active'),
 (2, 'Ambassador', 'Active');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `users`
---
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -133,9 +85,6 @@ CREATE TABLE `users` (
   `status` varchar(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Uncompleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `users`
---
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `password`, `featured_image`, `known_as`, `age`, `region`, `signature_dish_name`, `signature_dish_link`, `experience_number`, `experience_timeframe`, `grill_of_choice`, `biggest_inspiration`, `equipment_preferred`, `instagram_link`, `twitter_link`, `facebook_link`, `handle_blog`, `handle_article`, `blog_url`, `id_rol`, `created_by`, `created_date`, `status`) VALUES
 (1, 'FOGO', 'Admin', 'fogoadmin@gmail.com', '893a183603e12aba0dcccc616da21c0668ada4ac', NULL, 'Diego', 24, 'El Salvador', 'Chao Mein', 'http://localhost/ambassador_portal/view/pages/users/', 10, 'years', 'Kamado Joe', 'Me', 'Latex Gloves', 'http://localhost/ambassador_portal/view/pages/users/', 'http://localhost/ambassador_portal/view/pages/users/', 'http://localhost/ambassador_portal/view/pages/users/', NULL, NULL, NULL, 1, 1, '2019-09-16 18:00:00', 'Active');
@@ -149,11 +98,6 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `password`, `featured_i
 (7, 'Luis', 'Suriano', 'luis.suriano@fogocharcoal.com', '893a183603e12aba0dcccc616da21c0668ada4ac', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'years', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2020-01-22 12:17:36', 'Active'),
 (9, 'Diego', 'Menendez', 'die.menen@gmail.com', '893a183603e12aba0dcccc616da21c0668ada4ac', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'years', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 7, '2020-01-22 16:14:05', 'Active');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `users_metafields`
---
 
 CREATE TABLE `users_metafields` (
   `id` int(11) NOT NULL,
@@ -167,92 +111,47 @@ CREATE TABLE `users_metafields` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Estructura para la vista `api_list`
---
 DROP TABLE IF EXISTS `api_list`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `api_list`  AS  select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`last_name` AS `last_name`,`users`.`email` AS `email`,`users`.`known_as` AS `known_as`,`users`.`age` AS `age`,`users`.`region` AS `region`,`users`.`signature_dish_name` AS `signature_dish_name`,`users`.`signature_dish_link` AS `signature_dish_link`,concat(`users`.`experience_number`,' ',`users`.`experience_timeframe`) AS `experience`,`users`.`grill_of_choice` AS `grill_of_choice`,`users`.`biggest_inspiration` AS `biggest_inspiration`,`users`.`equipment_preferred` AS `equipment_preferred`,`users`.`instagram_link` AS `instagram_link`,`users`.`twitter_link` AS `twitter_link`,`users`.`facebook_link` AS `facebook_link`,`users`.`created_date` AS `created_date` from `users` ;
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `articles`
---
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
---
--- Indices de la tabla `roles`
---
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_rol` (`id_rol`),
   ADD KEY `created_by` (`created_by`);
 
---
--- Indices de la tabla `users_metafields`
---
 ALTER TABLE `users_metafields`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `articles`
---
 ALTER TABLE `articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT de la tabla `roles`
---
+
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT de la tabla `users`
---
+
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
--- AUTO_INCREMENT de la tabla `users_metafields`
---
+
 ALTER TABLE `users_metafields`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- Restricciones para tablas volcadas
---
 
---
--- Filtros para la tabla `articles`
---
 ALTER TABLE `articles`
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Filtros para la tabla `users`
---
+
 ALTER TABLE `users`
   ADD CONSTRAINT `id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

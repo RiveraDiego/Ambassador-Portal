@@ -15,6 +15,7 @@ spl_autoload_register(function ($clase) {
 $user = new User();
 
 $list = $user->list();
+$menu = "users";
 
 ?>
 <!DOCTYPE html>

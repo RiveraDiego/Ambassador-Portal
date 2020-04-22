@@ -172,7 +172,7 @@ $data = $user->get();
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="instagram_link">Instagram Link</label>
-										<input type="url" name="instagram_link" class="form-control" required="true" id="instagram_link" value="<?php echo $data['instagram_link']; ?>" placeholder="Enter the instagram link">
+										<input type="url" name="instagram_link" class="form-control" id="instagram_link" value="<?php echo $data['instagram_link']; ?>" placeholder="Enter the instagram link">
 									</div>
 								</div>
 							</div>
@@ -180,13 +180,13 @@ $data = $user->get();
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="twitter_link">Twitter Link</label>
-										<input type="url" name="twitter_link" class="form-control" required="true" id="twitter_link" value="<?php echo $data['twitter_link']; ?>" placeholder="Enter the twitter link">
+										<input type="url" name="twitter_link" class="form-control" id="twitter_link" value="<?php echo $data['twitter_link']; ?>" placeholder="Enter the twitter link">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="facebook_link">Facebook Link</label>
-										<input type="url" name="facebook_link" class="form-control" required="true" id="facebook_link" value="<?php echo $data['facebook_link']; ?>" placeholder="Enter the facebook link">
+										<input type="url" name="facebook_link" class="form-control" id="facebook_link" value="<?php echo $data['facebook_link']; ?>" placeholder="Enter the facebook link">
 									</div>
 								</div>
 							</div>
