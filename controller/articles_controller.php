@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userobj->setId($_SESSION['user_id']);
         $user_info = $userobj->get();
         
-        $_POST['tags'] = $_POST['tags'].",".$user_info['identify_by'];
+        $_POST['tags'] = $_POST['tags'].",".$user_info['blog_url']."-a";
         
         $shopify_data = add_to_shopify($_POST['title'], $_POST['author'], $_POST['tags'], $_POST['content'], $_POST['featured_image'], $blog_cook_id, $api_key, $password);
 

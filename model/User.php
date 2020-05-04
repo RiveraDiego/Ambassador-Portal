@@ -388,10 +388,10 @@ class User extends ConnBD {
                 }
             }
         }
-        }
+    }
 
-        public function list(){
-        $resultado = $this->conn->query("select users.id, users.name, users.last_name, users.email, users.id_rol, users.created_date, users.status, created.name as created_name, created.last_name as created_lastname from users users left join users created on created.id = users.created_by");
+    public function list(){
+        $resultado = $this->conn->query("SELECT users.id, users.name, users.last_name, users.email, users.id_rol, users.created_date, users.status, created.name AS created_name, created.last_name AS created_lastname FROM users users LEFT JOIN users created ON created.id = users.created_by ORDER BY users.created_date");
         $resultado->data_seek(0);
         $data = [];
         if (mysqli_num_rows($resultado) > 0) {

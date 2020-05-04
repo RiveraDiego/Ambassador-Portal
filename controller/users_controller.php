@@ -91,8 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user->setKnownAs($_POST['known_as']);
         $user->setAge($_POST['age']);
         $user->setRegion($_POST['region']);
-        $user->setSignatureDishName($_POST['signature_dish_name']);
-        $user->setSignatureDishlink($_POST['signature_dish_link']);
+        
         $user->setExperienceNumber($_POST['experience_number']);
         $user->setGrillOfChoice($_POST['grill_of_choice']);
         $user->setBiggestInspiration($_POST['biggest_inspiration']);
@@ -134,18 +133,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 array(
                     "key" => "experience",
                     "value" => $_POST['experience_number'] . ' ' . $_POST['experience_timeframe'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
-                    "key" => "signature_dish_name",
-                    "value" => $_POST['signature_dish_name'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
-                    "key" => "signature_dish_link",
-                    "value" => $_POST['signature_dish_link'],
                     "value_type" => "string",
                     "namespace" => "profile"
                 ),
@@ -200,6 +187,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "value_type"=>"string",
                     "namespace"=>"profile"
                 );
+            }
+            
+            if($_POST['signature_dish_link'] != ""){
+                $metafields[] = array(
+                    "key" => "signature_dish_name",
+                    "value" => $_POST['signature_dish_name'],
+                    "value_type" => "string",
+                    "namespace" => "profile"
+                );
+                array(
+                    "key" => "signature_dish_link",
+                    "value" => $_POST['signature_dish_link'],
+                    "value_type" => "string",
+                    "namespace" => "profile"
+                );
+                $user->setSignatureDishName($_POST['signature_dish_name']);
+                $user->setSignatureDishlink($_POST['signature_dish_link']);
             }
             
             if ($result = post_to_ambassadors($_SESSION['user_name'], $_SESSION['user_name'], "Ambassador", $content, $_POST['featured_image'], $metafields, $api_key, $password)) {

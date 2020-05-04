@@ -21,7 +21,7 @@ $menu = "users";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php include '../../pages/templates/header.php'?>
+  <?php include "../../pages/templates/header.php" ?>
   <style type="text/css">
     tr.users-link{
       cursor:pointer !important;
@@ -29,9 +29,9 @@ $menu = "users";
   </style>
 </head>
 <body id="page-top">
-  <?php include '../../pages/templates/nav.php'?>
+  <?php include "../../pages/templates/nav.php"?>
   <div id="wrapper">
-    <?php include '../../pages/templates/sidebar.php'?>
+    <?php include "../../pages/templates/sidebar.php"?>
 
 	<div id="content-wrapper">
       <div class="container-fluid">
@@ -152,7 +152,7 @@ $menu = "users";
                     <td style="vertical-align: middle;" class="text-center">
                       <?php
                       $date = date_create($row['created_date']);
-                      echo date_format($date, 'M d, h:ia');
+                      echo date_format($date, 'M d, Y h:ia');
                       ?>
                     </td>
                     <td style="vertical-align: middle;" class="text-center">
