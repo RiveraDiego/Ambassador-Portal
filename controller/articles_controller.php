@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $userblog->setId($_SESSION['user_id']);
             $userdata = $userblog->get();
             if ($article->deletePost()) {
-                if (delete_post($_GET['post'], $userdata["handle_blog"], $api_key, $password)) {
+                if (delete_post($_GET['post'], $blog_cook_id, $api_key, $password)) {
                     header("location: " . $_SESSION['root'] . "?msg=delete_success");
                 } else {
                     header("location: " . $_SESSION['root'] . "?msg=error");
