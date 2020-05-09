@@ -128,7 +128,7 @@ $data = $user->get();
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="signature_dish_name">Signature Dish</label>
-										<input type="text" name="signature_dish_name" class="form-control" required="true" id="signature_dish_name" value="<?php echo $data['signature_dish_name']; ?>" placeholder="Enter your signature dish name">
+										<input type="text" name="signature_dish_name" class="form-control" id="signature_dish_name" value="<?php echo $data['signature_dish_name']; ?>" placeholder="Enter your signature dish name">
 									</div>
 								</div>
 							</div>
@@ -136,7 +136,7 @@ $data = $user->get();
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="signature_dish_link">Link of your recipe</label>
-										<input type="url" name="signature_dish_link" class="form-control" required="true" id="signature_dish_link" value="<?php echo $data['signature_dish_link']; ?>" placeholder="Enter link for signature dish recipe">
+										<input type="url" name="signature_dish_link" class="form-control" id="signature_dish_link" value="<?php echo $data['signature_dish_link']; ?>" placeholder="Enter link for signature dish recipe">
 									</div>
 								</div>
 								<div class="col-md-6">
