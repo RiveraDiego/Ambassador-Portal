@@ -183,6 +183,11 @@ $menu = "users";
                       }
                     }
                       ?>
+                        <a title="Edit <?php echo $row['name'].' '.$row['last_name']; ?>" href="<?php echo $_SESSION['root'].'view/pages/users/edit.php?id='.$row['id']; ?>">
+                            <button type="button" class="btn btn-secondary">
+                                <i class="fas fa-fw fa-edit"></i>
+                            </button>
+                        </a>
                     </td>
                   </tr>
                   <?php
