@@ -28,12 +28,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else if ($_POST['id_rol'] == 1) {
             $user->setStatus("Active");
         }
-        
-        if ($user->addUser()) {
+        try{
+            $user->addUser();
             header("Location: " . $_SESSION['root'] . "view/pages/users/?msg=success");
-        } else {
-            header("Location: " . $_SESSION['root'] . "view/pages/users/?msg=error");
+        } catch (MySQLException $e) {
+            // other mysql exception (not duplicate key entry)
+            echo "<pre>";
+            print_r($e->getMessage());
+            echo "</pre>";
+            
+        } catch (Exception $ex) {
+            echo "<pre>";
+            print_r($ex->getMessage());
+            echo "</pre>";
+            //header("Location: " . $_SESSION['root'] . "view/pages/users/?msg=error");
         }
+        
     }
     if ($_POST['opt'] == "edit") {
         $user = new User();
