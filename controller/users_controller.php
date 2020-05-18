@@ -86,18 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user->setBiggestInspiration($_POST['biggest_inspiration']);
         $user->setEquipmentPreferred($_POST['equipment_preferred']);
 
-        if ($_POST['instagram_link'] != "") {
-            $user->setInstagramLink($_POST['instagram_link']);
-        }
-
-        if ($_POST['twitter_link'] != "") {
-            $user->setTwitterLink($_POST['twitter_link']);
-        }
-
-        if ($_POST['facebook_link'] != "") {
-            $user->setFacebookLink($_POST['facebook_link']);
-        }
-
         if ($_POST['handle_article'] == "") {
             $content = "";
             $metafields = array(
@@ -158,6 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "value_type"=>"string",
                     "namespace"=>"profile"
                 );
+                $user->setInstagramLink($_POST['instagram_link']);
             }
             
             if($_POST['twitter_link'] != ""){
@@ -167,6 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "value_type"=>"string",
                     "namespace"=>"profile"
                 );
+                $user->setTwitterLink($_POST['twitter_link']);
             }
             
             if($_POST['facebook_link'] != ""){
@@ -176,6 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "value_type"=>"string",
                     "namespace"=>"profile"
                 );
+                $user->setFacebookLink($_POST['facebook_link']);
             }
             
             if($_POST['signature_dish_name'] != ""){
@@ -266,18 +257,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "namespace" => "profile"
                 ),
                 array(
-                    "key" => "signature_dish_name",
-                    "value" => $_POST['signature_dish_name'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
-                    "key" => "signature_dish_link",
-                    "value" => $_POST['signature_dish_link'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
                     "key" => "grill_of_choice",
                     "value" => $_POST['grill_of_choice'],
                     "value_type" => "string",
@@ -296,45 +275,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "namespace" => "profile"
                 ),
                 array(
-                    "key" => "instagram_link",
-                    "value" => $_POST['instagram_link'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
-                    "key" => "twitter_link",
-                    "value" => $_POST['twitter_link'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
-                    "key" => "facebook_link",
-                    "value" => $_POST['facebook_link'],
-                    "value_type" => "string",
-                    "namespace" => "profile"
-                ),
-                array(
                     "key" => "handle_blog",
                     "value" => $_POST['blog_url'],
                     "value_type" => "string",
                     "namespace" => "profile"
                 )
             );
+            
+            if($_POST['instagram_link'] != ""){
+                $metafields[] = array(
+                    "key"=>"instagram_link",
+                    "value"=>$_POST['instagram_link'],
+                    "value_type"=>"string",
+                    "namespace"=>"profile"
+                );
+                $user->setInstagramLink($_POST['instagram_link']);
+            }
+            
+            if($_POST['twitter_link'] != ""){
+                $metafields[] = array(
+                    "key" => "twitter_link",
+                    "value" => $_POST['twitter_link'],
+                    "value_type" => "string",
+                    "namespace" => "profile"
+                );
+                $user->setTwitterLink($_POST['twitter_link']);
+            }
+            
+            if($_POST['facebook_link'] != ""){
+                $metafields[] = array(
+                    "key" => "facebook_link",
+                    "value" => $_POST['facebook_link'],
+                    "value_type" => "string",
+                    "namespace" => "profile"
+                );
+                $user->setFacebookLink($_POST['facebook_link']);
+            }
+            
+            if($_POST['signature_dish_name'] != ""){
+                $metafields[] = array(
+                    "key" => "signature_dish_name",
+                    "value" => $_POST['signature_dish_name'],
+                    "value_type" => "string",
+                    "namespace" => "profile"
+                );
+                $user->setSignatureDishName($_POST['signature_dish_name']);
+            }
+            
+            if($_POST['signature_dish_link'] != ""){
+                $metafields[] = array(
+                    "key" => "signature_dish_link",
+                    "value" => $_POST['signature_dish_link'],
+                    "value_type" => "string",
+                    "namespace" => "profile"
+                );
+                $user->setSignatureDishlink($_POST['signature_dish_link']);
+            }
 
             if ($result = delete_post_ambassador($_POST['handle_article'], $api_key, $password)) {
                 $result2 = post_to_ambassadors($_SESSION['user_name'], $_SESSION['user_name'], "Ambassador", $content, $_POST['featured_image'], $metafields, $api_key, $password);
                 $new_data = json_decode($result2, true);
-                $metafields = array(
-                    array(
-                        "key" => "featured_image",
-                        "value" => $results['article']['image']['src'],
-                        "value_type" => "string",
-                        "namespace" => "profile"
-                    )
-                );
-                if ($pi = save_profile_image($new_data['article'], $metafields, $api_key, $password)) {
-                    
-                }
                 $user->setHandleArticle($new_data["article"]['id']);
                 if ($user->editExtraInfo()) {
                     $_SESSION['user_status'] = "Active";

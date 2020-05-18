@@ -192,7 +192,7 @@ $data = $user->get();
 							</div>
 							<div class="form-row">
 								<?php
-									if($data['featured_image'] == "" || $_SESSION['user_status'] == "Uncompleted"){
+									//if($data['featured_image'] == "" || $_SESSION['user_status'] == "Uncompleted"){
 								?>
 								<div class="col-md-6">
 									<div class="form-group">
@@ -203,7 +203,7 @@ $data = $user->get();
 									</div>
 								</div>
 								<?php
-									}
+									//}
 								?>
 								<div class="col-md-6">
 								<?php
@@ -227,13 +227,13 @@ $data = $user->get();
 								</div>
 							</div>
 							<?php
-							if($_SESSION['user_status'] == "Uncompleted"){
+							//if($_SESSION['user_status'] == "Uncompleted"){
 							?>
 							<div class="form-group text-right">
 								<button type="submit" class="btn btn-info btn-lg btn-block">Save</button>
 							</div>
 							<?php
-							}
+							//}
 							?>
 						</form>
 					</div>
