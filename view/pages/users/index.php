@@ -166,27 +166,21 @@ $menu = "users";
                     <td style="vertical-align: middle;" class="text-center">
                       <?php if($row['id'] != $_SESSION['user_id']){ ?>
                       <?php if($row['status'] == "Active"){ ?>
-                      <a title="Suspend" href="<?php echo $_SESSION['root'].'controller/users_controller.php?opt=delete&id='.$row['id']; ?>">
-                        <button type="button" class="btn btn-danger">
+                      <a title="Suspend" class="btn btn-danger btn-sm" href="<?php echo $_SESSION['root'].'controller/users_controller.php?opt=delete&id='.$row['id']; ?>">
                           <i class="fas fa-fw fa-trash-alt"></i>
-                        </button>
                       </a>
                       <?php
                       }else{
                       ?>
-                      <a title="Activate" href="<?php echo $_SESSION['root'].'controller/users_controller.php?opt=reactivate&id='.$row['id']; ?>">
-                        <button type="button" class="btn btn-info">
+                      <a title="Activate" class="btn btn-info btn-sm" href="<?php echo $_SESSION['root'].'controller/users_controller.php?opt=reactivate&id='.$row['id']; ?>">
                           <i class="fas fa-fw fa-check"></i>
-                        </button>
                       </a>
                       <?php
                       }
                     }
                       ?>
-                        <a title="Edit <?php echo $row['name'].' '.$row['last_name']; ?>" href="<?php echo $_SESSION['root'].'view/pages/users/edit.php?id='.$row['id']; ?>">
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-fw fa-edit"></i>
-                            </button>
+                        <a title="Edit <?php echo $row['name'].' '.$row['last_name']; ?>" class="btn btn-secondary btn-sm" href="<?php echo $_SESSION['root'].'view/pages/users/edit.php?id='.$row['id']; ?>">
+                            <i class="fas fa-fw fa-edit"></i>
                         </a>
                     </td>
                   </tr>
