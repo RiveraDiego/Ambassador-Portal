@@ -36,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<pre>";
             print_r($e->getMessage());
             echo "</pre>";
-            
         } catch (Exception $ex) {
             echo "<pre>";
             print_r($ex->getMessage());

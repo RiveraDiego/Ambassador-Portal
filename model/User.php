@@ -316,7 +316,7 @@ class User extends ConnBD {
 
     public function addUser() {
         $data = null;
-        if (!($pquery = $this->conn->prepare("INSERT INTO {$this->getTable()}(name, last_name, email, password, id_rol, created_by, created_date, status, handle_blog, blog_url) VALUES (?,?,?,?,?,?,?,?,?,?)"))) {
+        if (!($pquery = $this->conn->prepare("INSERT INTO {$this->getTable()}(name, last_name, email, password, id_rol, created_by, created_date, status) VALUES (?,?,?,?,?,?,?,?)"))) {
             $msj = false; //"Falló la preparación: (" . $this->conn->errno . ") " . $this->conn->error;
         }
         /*
@@ -337,18 +337,16 @@ class User extends ConnBD {
         $created_by = $this->getCreatedBy();
         $created_date = $this->getCreatedDate();
         $status = $this->getStatus();
-        $handle_blog = $this->getHandleBlog();
-        $blog_url = $this->getBlogUrl();
 
-        if (!$pquery->bind_param("ssssiissss", $name, $last_name, $email, $password, $id_rol, $created_by, $created_date, $status, $handle_blog, $blog_url)) {
-            $msj = false; //"Falló la vinculación de parámetros: (" . $pquery->errno . ") " . $pquery->error;
+        if (!$pquery->bind_param("ssssiiss", $name, $last_name, $email, $password, $id_rol, $created_by, $created_date, $status)) {
+            $msj = "Falló la vinculación de parámetros: (" . $pquery->errno . ") " . $pquery->error;
         }
         if (!$pquery->execute()) {
-            $data = false; //"Falló la ejecución: (" . $pquery->errno . ") " . $pquery->error;
+            $data = "Falló la ejecución: (" . $pquery->errno . ") " . $pquery->error;
 
             return @$data;
         } else {
-            //$data = "Categoria ingresado correctamente";
+            //$data = "Usuario ingresado correctamente";
             return true;
         }
     }
