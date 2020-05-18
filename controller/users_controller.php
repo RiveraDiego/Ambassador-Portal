@@ -19,26 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user->setIdRol($_POST['id_rol']);
         $user->setCreatedBy($_POST['created_by']);
         $user->setCreatedDate(date("Y-m-d H:i:s"));
-        $identify_by = strtolower($_POST['name']) . "" . strtolower($_POST['last_name']);
-        $identify_by .= date("HisdmY");
-        $user->setIdentifyBy($identify_by);
-
 
         if ($_POST['id_rol'] == 2) {
-            $title = $_POST['name'] . ' ' . $_POST['last_name'];
-            $result = create_profile_blog($title, $api_key, $password);
-            if ($result) {
-                $handle = $result['blog']['id'];
-                $blog_url = $result['blog']['handle'];
-                $user->setHandleBlog($handle);
-                $user->setBlogUrl($blog_url);
-            } else {
-                header("Location: " . $_SESSION['root'] . "view/pages/users/?msg=error");
-            }
+            //$title = $_POST['name'].'-'.$_POST['last_name'].'-a';
+            //$result = create_profile_blog($title, $api_key, $password);
+            //header("Location: " . $_SESSION['root'] . "view/pages/users/?msg=error");
             $user->setStatus($_POST['status']);
         } else if ($_POST['id_rol'] == 1) {
             $user->setStatus("Active");
         }
+        
         if ($user->addUser()) {
             header("Location: " . $_SESSION['root'] . "view/pages/users/?msg=success");
         } else {
@@ -91,7 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user->setKnownAs($_POST['known_as']);
         $user->setAge($_POST['age']);
         $user->setRegion($_POST['region']);
-        
         $user->setExperienceNumber($_POST['experience_number']);
         $user->setGrillOfChoice($_POST['grill_of_choice']);
         $user->setBiggestInspiration($_POST['biggest_inspiration']);
@@ -189,27 +178,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 );
             }
             
-            if($_POST['signature_dish_link'] != ""){
+            if($_POST['signature_dish_name'] != ""){
                 $metafields[] = array(
                     "key" => "signature_dish_name",
                     "value" => $_POST['signature_dish_name'],
                     "value_type" => "string",
                     "namespace" => "profile"
                 );
-                array(
+                $user->setSignatureDishName($_POST['signature_dish_name']);
+            }
+            
+            if($_POST['signature_dish_link'] != ""){
+                $metafields[] = array(
                     "key" => "signature_dish_link",
                     "value" => $_POST['signature_dish_link'],
                     "value_type" => "string",
                     "namespace" => "profile"
                 );
-                $user->setSignatureDishName($_POST['signature_dish_name']);
                 $user->setSignatureDishlink($_POST['signature_dish_link']);
             }
             
             if ($result = post_to_ambassadors($_SESSION['user_name'], $_SESSION['user_name'], "Ambassador", $content, $_POST['featured_image'], $metafields, $api_key, $password)) {
                 $results = json_decode($result, true);
                 $user->setHandleArticle($results["article"]["id"]);
-                $metafields_imgProfile = array(
+                /*$metafields_imgProfile = array(
                     array(
                         "key" => "featured_image",
                         "value" => $results['article']['image']['src'],
@@ -236,6 +228,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     header("Location: " . $_SESSION['root'] . "view/pages/users/info.php?msg=error");
                     //print_r($img_setted);
+                }*/
+                if ($user->editExtraInfo()) {
+                    $_SESSION['user_status'] = "Active";
+                    header("Location: " . $_SESSION['root'] . "view/pages/users/info.php?msg=sue");
+                    //print_r($pi);
+                } else {
+                    header("Location: " . $_SESSION['root'] . "view/pages/users/info.php?msg=error");
+                    //print_r($user);
                 }
             }
         } else {
@@ -355,13 +355,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $user = new User();
             $user->setId($_GET['id']);
             $userdata = $user->get();
-            if (delete_blog_profile($userdata["handle_blog"], $api_key, $password)) {
-                if (delete_post_ambassador($userdata['handle_article'], $api_key, $password)) {
-                    if ($user->delete()) {
-                        header("location: " . $_SESSION['root'] . "view/pages/users/?msg=delete_success");
-                    } else {
-                        header("location: " . $_SESSION['root'] . "view/pages/users/?msg=error");
-                    }
+            if (delete_post_ambassador($userdata['handle_article'], $api_key, $password)) {
+                if ($user->delete()) {
+                    header("location: " . $_SESSION['root'] . "view/pages/users/?msg=delete_success");
                 } else {
                     header("location: " . $_SESSION['root'] . "view/pages/users/?msg=error");
                 }
@@ -464,7 +460,7 @@ function post_to_ambassadors($title, $author, $tags, $content, $featured_image, 
 }
 
 function delete_post_ambassador($article, $api_key, $password) {
-    $url = "https://{$api_key}:{$password}@fogocharcoal.myshopify.com/admin/api/2019-10/blogs/49093541952/articles/{$article}.json";
+    $url = "https://{$api_key}:{$password}@fogocharcoal.myshopify.com/admin/api/2020-04/blogs/49093541952/articles/{$article}.json";
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

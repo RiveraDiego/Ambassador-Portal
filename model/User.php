@@ -33,7 +33,6 @@ class User extends ConnBD {
     private $id_rol;
     private $created_by;
     private $created_date;
-    private $identify_by;
     private $status;
     private $table = "users";
 
@@ -253,14 +252,6 @@ class User extends ConnBD {
         return $this->created_date;
     }
 
-    public function setIdentifyBy($identify_by) {
-        $this->identify_by = $identify_by;
-    }
-
-    public function getIdentifyBy() {
-        return $this->identify_by;
-    }
-
     public function setStatus($status) {
         $this->status = $status;
     }
@@ -325,7 +316,7 @@ class User extends ConnBD {
 
     public function addUser() {
         $data = null;
-        if (!($pquery = $this->conn->prepare("INSERT INTO {$this->getTable()}(name, last_name, email, password, id_rol, created_by, created_date, status, handle_blog, blog_url, identify_by) VALUES (?,?,?,?,?,?,?,?,?,?,?)"))) {
+        if (!($pquery = $this->conn->prepare("INSERT INTO {$this->getTable()}(name, last_name, email, password, id_rol, created_by, created_date, status, handle_blog, blog_url) VALUES (?,?,?,?,?,?,?,?,?,?)"))) {
             $msj = false; //"Falló la preparación: (" . $this->conn->errno . ") " . $this->conn->error;
         }
         /*
@@ -348,9 +339,8 @@ class User extends ConnBD {
         $status = $this->getStatus();
         $handle_blog = $this->getHandleBlog();
         $blog_url = $this->getBlogUrl();
-        $identify_by = $this->getIdentifyBy();
 
-        if (!$pquery->bind_param("ssssiisssss", $name, $last_name, $email, $password, $id_rol, $created_by, $created_date, $status, $handle_blog, $blog_url, $identify_by)) {
+        if (!$pquery->bind_param("ssssiissss", $name, $last_name, $email, $password, $id_rol, $created_by, $created_date, $status, $handle_blog, $blog_url)) {
             $msj = false; //"Falló la vinculación de parámetros: (" . $pquery->errno . ") " . $pquery->error;
         }
         if (!$pquery->execute()) {
